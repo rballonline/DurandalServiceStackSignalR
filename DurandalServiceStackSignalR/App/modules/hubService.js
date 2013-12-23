@@ -1,6 +1,7 @@
 ﻿define(function (require) {
 	var router = require('plugins/router');
 	var $ = require('jquery');
+	var app = require('durandal/app');
 	var chat;
 
 	var hubService = {
@@ -9,12 +10,10 @@
 			var self = this;
 			chat = $.connection.chatHub;
 
-			chat.client.broadcastMessage = function (name, message) {
-				// Add the message to the page. 
-				$('#discussion').append('<li><strong>' + htmlEncode(name)
-										+ '</strong>: ' + htmlEncode(message) + '</li>');
+			chat.client.broadcastMessage = function (message) {
+				app.trigger('new-message', message);
 			};
-			
+
 			$.connection.hub.start();
 		},
 		sendMessage: function (message) {

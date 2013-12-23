@@ -1,9 +1,14 @@
-﻿<section class="row">
-
-<div class="container">
-    <input type="text" data-bind="value: message" />
-    <input type="button" data-bind="click: sendMessage, hasFocus: messageSelected" value="Send" />
-    <ul id="discussion">
-    </ul>
+﻿<div class="row">
+	<div class="col-md-12">
+		<form class="form-inline" role="form" data-bind="submit: sendMessage">
+			<div class="form-group">
+				<label class="sr-only" for="message">Message</label>
+				<input type="text" id="message"class="form-control" data-bind="value: message, hasFocus: messageHasFocus" placeholder="Type yer message" />
+			</div>
+			<input type="submit" class="btn btn-primary" value="Send" />
+		</form>
+		<ul data-bind="foreach: messages">
+			<li data-bind="text: $data"></li>
+		</ul>
+	</div>
 </div>
-</section>
