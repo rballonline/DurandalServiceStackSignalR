@@ -14,7 +14,7 @@
             }
 
             var that = this;
-            return http.jsonp('http://api.flickr.com/services/feeds/photos_public.gne', { tags: 'mount ranier', tagmode: 'any', format: 'json' }, 'jsoncallback').then(function(response) {
+            return http.jsonp('http://api.flickr.com/services/feeds/photos_public.gne', { tags: 'beach', tagmode: 'any', format: 'json' }, 'jsoncallback').then(function(response) {
                 that.images(response.items);
             });
         },

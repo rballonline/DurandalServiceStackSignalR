@@ -8,11 +8,6 @@ namespace DurandalServiceStackSignalR.Hubs
 {
 	public class ChatHub : Hub
 	{
-		public ChatHub()
-		{
-
-		}
-
 		public void Send(string message)
 		{
 			Clients.All.broadcastMessage(message);
