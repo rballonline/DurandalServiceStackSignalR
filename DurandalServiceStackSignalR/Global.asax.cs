@@ -8,6 +8,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using ServiceStack;
 using DurandalServiceStackSignalR.Services;
+using Microsoft.AspNet.SignalR;
+using DurandalServiceStackSignalR.Hubs;
 
 namespace DurandalServiceStackSignalR
 {
@@ -23,7 +25,10 @@ namespace DurandalServiceStackSignalR
 
 			public override void Configure(Funq.Container container)
 			{
+				GlobalHost.DependencyResolver = new FunqDependencyResolver(container); 
 				SetConfig(new HostConfig { HandlerFactoryPath = "api" });
+
+				container.Register<IHelloService>(new HelloService());
 
 				//register any dependencies your services use, e.g:
 				//container.Register<ICacheClient>(new MemoryCacheClient());

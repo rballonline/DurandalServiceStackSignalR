@@ -28,6 +28,7 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'modules/hubS
 		//Look for partial views in a 'views' folder in the root.
 		viewLocator.useConvention();
 		hubService.init();
+		$.connection.hub.start();
 		app.setRoot('viewmodels/shell', 'entrance');
 	});
 });

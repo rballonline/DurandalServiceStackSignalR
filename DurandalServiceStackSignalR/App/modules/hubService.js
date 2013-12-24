@@ -14,7 +14,6 @@
 				app.trigger('new-message', message);
 			};
 
-			$.connection.hub.start();
 		},
 		sendMessage: function (message) {
 			chat.server.send(message);
