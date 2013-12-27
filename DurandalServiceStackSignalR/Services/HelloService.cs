@@ -8,18 +8,10 @@ using Microsoft.AspNet.SignalR;
 
 namespace DurandalServiceStackSignalR.Services
 {
-	public interface IHelloService
-	{
-		object Any(Hello request);
-	}
-
-	public class HelloService : Service, IHelloService
+	public class HelloService : Service
 	{
 		public object Any(Hello request)
 		{
-			var hub = GlobalHost.ConnectionManager.GetHubContext<ChatHub>();
-			hub.Clients.All.Invoke("broadcastMessage", "Hello, " + request.Name);
-
 			return new HelloResponse { Result = "Hello, " + request.Name };
 		}
 	} 
@@ -35,6 +27,4 @@ namespace DurandalServiceStackSignalR.Services
 	{
 		public string Result { get; set; }
 	}
-
-
 }

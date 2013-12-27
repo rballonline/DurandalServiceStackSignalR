@@ -28,8 +28,6 @@ namespace DurandalServiceStackSignalR
 				GlobalHost.DependencyResolver = new FunqDependencyResolver(container); 
 				SetConfig(new HostConfig { HandlerFactoryPath = "api" });
 
-				container.Register<IHelloService>(new HelloService());
-
 				//register any dependencies your services use, e.g:
 				//container.Register<ICacheClient>(new MemoryCacheClient());
 			}
